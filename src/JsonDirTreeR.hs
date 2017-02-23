@@ -2,13 +2,17 @@
 -- first: stack install
 -- second (ignore the error 'ghc can't apply -o to multiple source files'):
 -- Windows:
---   stack build --ghc-options "-shared -fPIC StartEnd.c -o R/inst/libs/x64/JsonDirTree.dll"
---   stack setup --stack-yaml stack32.yaml
---   stack build --stack-yaml stack32.yaml --ghc-options "-shared -fPIC StartEnd.c -o R/inst/libs/i386/JsonDirTree.dll"
+--   64 bit:
+--     stack build --ghc-options "-shared -fPIC StartEnd.c -o Rpackage/inst/libs/x64/JsonDirTree.dll"
+--   32 bit:
+--     stack install jsondirtree --stack-yaml stack32jsondirtree.yaml
+--     stack setup --stack-yaml stack32.yaml
+--     stack build --stack-yaml stack32.yaml --ghc-options "-shared -fPIC StartEnd.c -o Rpackage/inst/libs/i386/JsonDirTree.dll"
 -- Linux:
 --
 
 {-# LANGUAGE ForeignFunctionInterface #-}
+-- the two pragmas below are possibly useless (not tested)
 {-# LANGUAGE DataKinds #-}
 {-# LANGUAGE OverloadedStrings #-}
 
