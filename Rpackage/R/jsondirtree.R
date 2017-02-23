@@ -1,6 +1,6 @@
 .dir2json <- function(dir, depth){
   .C("dirToJSONtreeR", depth=as.integer(depth), dir=dir,
-     result=character(0L))$result
+     result=character(1L), NACK=TRUE)$result
 }
 
 #' @title JSON representation of a directory
@@ -9,7 +9,8 @@
 #' @export
 #' @return A string.
 #' @param dir the path of the directory
-#' @param depth a nonnegative integer, the desired depth, or \code{NULL}
+#' @param depth a nonnegative integer, the desired depth, or \code{NULL} to
+#' search until the end
 dir2json <- function(dir, depth=NULL){
   if(!dir.exists(dir)){
     stop(sprintf("Folder %s not found.", dir))
