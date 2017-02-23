@@ -5,6 +5,7 @@
 
 #' @title JSON representation of a directory
 #' @description Returns the hiearchical structure of a folder as a JSON string.
+#' @useDynLib JsonDirTreeR
 #' @export
 #' @return A string.
 #' @param dir the path of the directory
