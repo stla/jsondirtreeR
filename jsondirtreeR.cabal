@@ -10,7 +10,7 @@ maintainer:          laurent_step@yahoo.fr
 copyright:           2017 Stéphane Laurent
 category:            Dynamic linker
 build-type:          Simple
-extra-source-files:  README.md
+extra-source-files:  README.md, StartEnd.c
 cabal-version:       >=1.10
 
 library

@@ -1,0 +1,12 @@
+packages:
+- C:/HaskellProjects/jsondirtree
+
+resolver: lts-8.2
+
+arch: x86_64
+
+# Extra directories used by stack for building
+extra-include-dirs:
+- C:\PortableApps\R-portable_3.3.1\App\R-Portable\include
+extra-lib-dirs:
+- C:\PortableApps\R-portable_3.3.1\App\R-Portable\bin\x64
