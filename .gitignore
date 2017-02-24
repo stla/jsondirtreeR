@@ -3,4 +3,4 @@
 *.dll
 *.dll.a
 StartEnd.o
-BuildDLL.hs
+BuildDLLs.hs
