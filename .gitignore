@@ -3,4 +3,3 @@
 *.dll
 *.dll.a
 StartEnd.o
-BuildDLLs.hs
