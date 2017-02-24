@@ -4,7 +4,7 @@ packages:
 - '.'
 - C:/HaskellProjects/jsondirtree # (https://github.com/stla/jsondirtree)
 
-arch: x86_64
+#arch: x86_64
 
 # Extra directories used by stack for building
 extra-include-dirs:

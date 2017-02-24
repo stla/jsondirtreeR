@@ -1,17 +1,16 @@
 -- compilation
 -- Windows:
 --   64 bit:
---     stack setup
---     stack exec -- ghc -c StartEnd.c
---     stack build --ghc-options "-shared -fPIC -o JsonDirTreeR.dll C:\HaskellProjects\jsondirtreeR\StartEnd.o"
+--     stack setup --arch x86_64
+--     stack exec --arch x86_64 -- ghc -c StartEnd.c
+--     stack build --arch x86_64 --ghc-options "-shared -fPIC -o JsonDirTreeR.dll %cd%\StartEnd.o"
 --     mv JsonDirTreeR.dll Rpackage/inst/libs/x64/JsonDirTreeR.dll
 --     rm JsonDirTreeR.dll.a
 --   32 bit:
 --     stack clean
---     stack install jsondirtree --stack-yaml stack32jsondirtree.yaml
---     stack setup --stack-yaml stack32.yaml
---     stack exec -- ghc -c StartEnd.c
---     stack build --stack-yaml stack32.yaml --ghc-options "-shared -fPIC -o JsonDirTreeR.dll C:\HaskellProjects\jsondirtreeR\StartEnd.o"
+--     stack setup --arch i386
+--     stack exec --arch i386 -- ghc -c StartEnd.c
+--     stack build --arch i386 --ghc-options "-shared -fPIC -o JsonDirTreeR.dll %cd%\StartEnd.o"
 --     mv JsonDirTreeR.dll Rpackage/inst/libs/i386/JsonDirTreeR.dll
 --     rm JsonDirTreeR.dll.a
 -- Linux:
@@ -19,8 +18,8 @@
 
 {-# LANGUAGE ForeignFunctionInterface #-}
 -- the two pragmas below are possibly useless (not tested)
-{-# LANGUAGE DataKinds #-}
-{-# LANGUAGE OverloadedStrings #-}
+-- {-# LANGUAGE DataKinds #-}
+-- {-# LANGUAGE OverloadedStrings #-}
 
 module JsonDirTreeR
   where
