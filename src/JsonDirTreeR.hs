@@ -1,5 +1,18 @@
 -- compilation
 -- Windows:
+-- NEW (with ghc-options in cabal file)
+--   64 bit:
+--     stack setup --arch x86_64
+--     stack build --arch x86_64
+--     mv HSdll.dll Rpackage/inst/libs/x64/JsonDirTreeR.dll
+--     rm HSdll.dll.a
+--   32 bit:
+--     stack clean
+--     stack setup --arch i386
+--     stack build --arch i386
+--     mv HSdll.dll Rpackage/inst/libs/x64/JsonDirTreeR.dll
+--     rm HSdll.dll.a
+-- OLD
 --   64 bit:
 --     stack setup --arch x86_64
 --     stack exec --arch x86_64 -- ghc -c StartEnd.c
