@@ -2,4 +2,5 @@
 .haskell-ghc-mod.json
 *.dll
 *.dll.a
+*.so
 StartEnd.o

@@ -14,12 +14,12 @@
 --     mv JsonDirTreeR.dll Rpackage/inst/libs/i386/JsonDirTreeR.dll
 --     rm JsonDirTreeR.dll.a
 -- Linux:
---
+--     stack setup
+--     stack exec -- ghc -c StartEnd.c
+--     stack build --ghc-options "-shared -fPIC -dynamic -lHSrts-ghc8.0.2 -o Main.so $(pwd)/StartEnd.o"
+--     mv Main.so ./Rpackage/inst/libs/JsonDirTreeR.so
 
 {-# LANGUAGE ForeignFunctionInterface #-}
--- the two pragmas below are possibly useless (not tested)
--- {-# LANGUAGE DataKinds #-}
--- {-# LANGUAGE OverloadedStrings #-}
 
 module JsonDirTreeR
   where
