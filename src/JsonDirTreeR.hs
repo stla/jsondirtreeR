@@ -10,7 +10,7 @@
 --     stack clean
 --     stack setup --arch i386
 --     stack build --arch i386
---     mv HSdll.dll Rpackage/inst/libs/x64/JsonDirTreeR.dll
+--     mv HSdll.dll Rpackage/inst/libs/i386/JsonDirTreeR.dll
 --     rm HSdll.dll.a
 -- OLD
 --   64 bit:
@@ -38,7 +38,7 @@ module JsonDirTreeR
   where
 import Foreign
 import Foreign.C
-import JsonDirTree (dirToJSONtree)
+import JsonDirTree (dirToJSONtree, drawDir)
 import Data.ByteString.Lazy.Internal (unpackChars)
 
 foreign export ccall dirToJSONtreeR :: Ptr CInt -> Ptr CString -> Ptr CString -> IO ()
@@ -51,4 +51,18 @@ dirToJSONtreeR depth dir result = do
             (if d<0 then Nothing else Just d)
               dir
   jsonC <- newCString $ unpackChars json
-  poke result $ jsonC
+  poke result jsonC
+
+foreign export ccall dirToTreeR :: Ptr CInt -> Ptr CString -> Ptr CInt -> Ptr CString -> IO ()
+dirToTreeR :: Ptr CInt -> Ptr CString -> Ptr CInt -> Ptr CString -> IO ()
+dirToTreeR depth dir vertical result = do
+  depth <- peek depth
+  let d = fromIntegral depth :: Int
+  dir <- (>>=) (peek dir) peekCString
+  vertical <- peek vertical
+  let v = vertical > 0
+  tree <- drawDir
+            (if d<0 then Nothing else Just d)
+              dir v
+  treeC <- newCString tree
+  poke result treeC

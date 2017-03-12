@@ -4,3 +4,5 @@ packages:
 - '.'
 - ../jsondirtree # (https://github.com/stla/jsondirtree)
 
+extra-deps:
+- pretty-tree-0.1.0.0
