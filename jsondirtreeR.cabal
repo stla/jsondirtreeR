@@ -13,17 +13,14 @@ build-type:          Simple
 extra-source-files:  README.md, StartEnd.c
 cabal-version:       >=1.10
 
--- library
---   hs-source-dirs:      src
--- -- ghc-options:
---   exposed-modules:     JsonDirTreeR
---   build-depends:       base >= 4.7 && < 5
--- --                     , containers
--- --                     , th-expand-syns
--- --                     , inline-r
---                      , jsondirtree
---                      , bytestring
---   default-language:    Haskell2010
+library
+  hs-source-dirs:      src
+  exposed-modules:     JsonDirTreeR
+  build-depends:       base >= 4.7 && < 5
+                     , jsondirtree
+                     , bytestring
+  default-language:    Haskell2010
+  ghc-options:         -optl-no-pie
 
 executable JsonDirTreeR
   hs-source-dirs:      src
@@ -35,7 +32,10 @@ executable JsonDirTreeR
   if os(windows)
     ghc-options:         -O2 -shared -fPIC StartEnd.c
   else
-    ghc-options:         -O2 -shared -fPIC -dynamic -lHSrts-ghc8.0.2 StartEnd.c
+    ghc-options:         -no-hs-main -O2 -shared -fPIC -dynamic
+    c-sources:           src/StartEnd.c
+    extra-libraries:     HSrts-ghc8.0.2
+
 
 source-repository head
   type:     git

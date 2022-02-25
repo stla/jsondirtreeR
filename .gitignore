@@ -4,3 +4,8 @@
 *.dll.a
 *.so
 StartEnd.o
+*.out
+src/*.hi
+src/*.o
+src/JsonDirTreeR_stub.h
+stack.yaml.lock

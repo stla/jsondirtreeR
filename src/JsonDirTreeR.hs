@@ -41,9 +41,9 @@ import Foreign.C
 import JsonDirTree (dirToJSONtree, drawDir)
 import Data.ByteString.Lazy.Internal (unpackChars)
 
-foreign export ccall dirToJSONtreeR :: Ptr CInt -> Ptr CString -> Ptr CString -> IO ()
-dirToJSONtreeR :: Ptr CInt -> Ptr CString -> Ptr CString -> IO ()
-dirToJSONtreeR depth dir result = do
+foreign export ccall dirToJSON :: Ptr CInt -> Ptr CString -> Ptr CString -> IO ()
+dirToJSON :: Ptr CInt -> Ptr CString -> Ptr CString -> IO ()
+dirToJSON depth dir result = do
   depth <- peek depth
   let d = fromIntegral depth :: Int
   dir <- (>>=) (peek dir) peekCString
@@ -53,9 +53,9 @@ dirToJSONtreeR depth dir result = do
   jsonC <- newCString $ unpackChars json
   poke result jsonC
 
-foreign export ccall dirToTreeR :: Ptr CInt -> Ptr CString -> Ptr CInt -> Ptr CString -> IO ()
-dirToTreeR :: Ptr CInt -> Ptr CString -> Ptr CInt -> Ptr CString -> IO ()
-dirToTreeR depth dir vertical result = do
+foreign export ccall dirToTree :: Ptr CInt -> Ptr CString -> Ptr CInt -> Ptr CString -> IO ()
+dirToTree :: Ptr CInt -> Ptr CString -> Ptr CInt -> Ptr CString -> IO ()
+dirToTree depth dir vertical result = do
   depth <- peek depth
   let d = fromIntegral depth :: Int
   dir <- (>>=) (peek dir) peekCString
